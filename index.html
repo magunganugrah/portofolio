@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moch. Agung Anugrah – Operations, Procurement & Learning Design</title>
+<meta name="description" content="Portfolio of Moch. Agung Anugrah: academic operations, procurement, curriculum design, content development and IT project coordination in Jakarta.">
+<meta property="og:title" content="Moch. Agung Anugrah – Portfolio">
+<meta property="og:description" content="Operations, procurement, curriculum design and IT project coordination.">
+<meta property="og:image" content="assets/foto.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧭%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F7; --surface:#FFFFFF; --ink:#13233A; --muted:#55657A; --line:#D5DDE5;
+  --ops:#0E7C86; --cur:#B86B0F; --tech:#4153C4;
+  --focus:#13233A;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1826; --surface:#16263A; --ink:#E8EEF5; --muted:#9DB0C5; --line:#2A3C54;
+    --ops:#41C3CE; --cur:#F0A94F; --tech:#8D9CF5; --focus:#E8EEF5;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1826; --surface:#16263A; --ink:#E8EEF5; --muted:#9DB0C5; --line:#2A3C54;
+  --ops:#41C3CE; --cur:#F0A94F; --tech:#8D9CF5; --focus:#E8EEF5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0}
+h2{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;margin-bottom:1.5rem;letter-spacing:-.01em}
+section{padding:4rem 0 1rem}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0}
+.top nav{display:flex;gap:1.25rem;flex-wrap:wrap;font-weight:500;font-size:.95rem}
+.top nav a{text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.35rem .8rem;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 250px;gap:3rem;align-items:center;padding:3rem 0 2rem}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.03em}
+.hero .role{font-family:var(--display);font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:500;color:var(--muted);margin:1rem 0 1.4rem}
+.hero p.lead{max-width:60ch;margin:0 0 1.8rem}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:.75rem 1.25rem;border-radius:10px;border:2px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{opacity:.88}
+.btn.ghost:hover{background:var(--surface)}
+.photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50% 50% 50% 8%;border:6px solid var(--surface);box-shadow:0 0 0 2px var(--line)}
+
+/* tracks legend + gantt */
+.legend{display:flex;gap:1.1rem;flex-wrap:wrap;margin:0 0 1.2rem;font-size:.92rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:.8rem;height:.8rem;border-radius:3px;margin-right:.45rem;background:var(--c);vertical-align:-1px}
+.gantt-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1rem .6rem}
+.gantt{min-width:760px;position:relative}
+.axis{position:relative;height:1.6rem;border-bottom:1px solid var(--line);margin-left:7.5rem}
+.axis span{position:absolute;transform:translateX(-50%);font-size:.78rem;color:var(--muted)}
+.lane{display:flex;align-items:center;height:2.9rem;border-bottom:1px dashed var(--line)}
+.lane:last-child{border-bottom:0}
+.lane-label{width:7.5rem;font-size:.82rem;font-weight:600;color:var(--muted);flex:none;line-height:1.2}
+.lane-track{position:relative;flex:1;height:100%}
+.bar{position:absolute;top:.5rem;height:1.9rem;border-radius:7px;background:var(--c);color:#fff;font-size:.74rem;font-weight:600;display:flex;align-items:center;padding:0 .45rem;overflow:hidden;white-space:nowrap;text-decoration:none;border:0;cursor:pointer;font-family:var(--body)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar{color:#0E1826}}
+:root[data-theme="dark"] .bar{color:#0E1826}
+.bar:hover,.bar.on{filter:brightness(1.12);box-shadow:0 0 0 2px var(--ink)}
+.hint{font-size:.88rem;color:var(--muted);margin:.7rem 0 0}
+
+/* experience */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:.4rem .95rem;border-radius:999px;font:inherit;font-size:.92rem;font-weight:500;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.job{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:12px;margin-bottom:.8rem}
+.job[hidden]{display:none}
+.job summary{list-style:none;cursor:pointer;padding:1rem 1.2rem;display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;align-items:center}
+.job summary::-webkit-details-marker{display:none}
+.job h3{font-size:1.15rem;font-weight:700}
+.job .org{color:var(--muted);font-size:.95rem}
+.job .when{font-size:.9rem;font-weight:600;color:var(--c);text-align:right;grid-row:1;grid-column:2}
+.job .chev{grid-row:2;grid-column:2;justify-self:end;transition:transform .2s;color:var(--muted)}
+.job[open] .chev{transform:rotate(180deg)}
+.job ul{margin:0;padding:0 1.2rem 1.2rem 2.6rem;color:var(--ink)}
+.job li{margin:.3rem 0;max-width:75ch}
+.job.flash{animation:flash 1.2s ease}
+@keyframes flash{0%{box-shadow:0 0 0 4px var(--c)}100%{box-shadow:0 0 0 0 transparent}}
+@media (max-width:560px){.job summary{grid-template-columns:1fr}.job .when,.job .chev{grid-column:1;grid-row:auto;text-align:left;justify-self:start}}
+
+/* projects */
+.project{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--tech);border-radius:12px;padding:1.2rem 1.4rem}
+.project h3{font-size:1.2rem;margin-bottom:.25rem}
+.project p{margin:0;color:var(--muted);max-width:55ch}
+
+/* speaking */
+.shot{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:.9rem 1.2rem;color:var(--muted);font-size:.95rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1rem}
+.skillbox{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.2rem}
+.skillbox h3{font-size:1.1rem;margin-bottom:.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.tags li{font-size:.88rem;padding:.2rem .65rem;border-radius:6px;background:var(--bg);border:1px solid var(--line)}
+
+/* education + contact */
+.edu{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.4rem}
+.edu strong{font-family:var(--display);font-size:1.2rem}
+.edu p{margin:.3rem 0 0;color:var(--muted)}
+.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;list-style:none;padding:0;margin:0}
+.contact-list a{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;font-weight:600;word-break:break-word}
+.contact-list a:hover{border-color:var(--ink)}
+.contact-list .loc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;font-weight:600}
+.contact-list small{display:block;font-weight:400;color:var(--muted)}
+footer{padding:3rem 0 2.5rem;color:var(--muted);font-size:.9rem}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:1.5rem}
+  .photo{width:170px;order:-1}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <strong style="font-family:var(--display)">Moch Agung Anugrah</strong>
+    <nav aria-label="Main">
+      <a href="#journey">Career path</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch between light and dark theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>Moch. Agung Anugrah</h1>
+        <p class="role">Academic operations · Procurement · Curriculum design · Content development · IT project coordination</p>
+        <p class="lead">Results-driven professional experienced in day-to-day operations, procurement, vendor coordination, budget monitoring and resource management, with a background in curriculum and content development. I coordinate projects, keep documentation and reporting in order, and work across teams with a focus on operational efficiency, cost control and service quality.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="#experience">See my experience</a>
+        </div>
+      </div>
+      <img class="photo" src="assets/foto.jpg" alt="Portrait of Moch. Agung Anugrah" width="420" height="420">
+    </div>
+
+    <section id="journey" aria-labelledby="h-journey">
+      <h2 id="h-journey">From IT to operations, one role leading to the next</h2>
+      <div class="legend" aria-hidden="true">
+        <span style="--c:var(--ops)">Operations & procurement</span>
+        <span style="--c:var(--cur)">Curriculum & content</span>
+        <span style="--c:var(--tech)">IT & web development</span>
+      </div>
+      <div class="gantt-scroll">
+        <div class="gantt" id="gantt" role="group" aria-label="Career timeline from 2014 to the present"></div>
+      </div>
+      <p class="hint">Select a bar to jump to that role’s details.</p>
+    </section>
+
+    <section id="experience" aria-labelledby="h-exp">
+      <h2 id="h-exp">Experience</h2>
+      <div class="filters" role="group" aria-label="Filter experience by area">
+        <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="ops" aria-pressed="false">Operations & procurement</button>
+        <button class="chip" type="button" data-f="cur" aria-pressed="false">Curriculum & content</button>
+        <button class="chip" type="button" data-f="tech" aria-pressed="false">IT & web development</button>
+      </div>
+
+      <details class="job" id="job-sparks" data-track="ops" style="--c:var(--ops)" open>
+        <summary>
+          <div><h3>Senior Academic Operational (Procurement)</h3><div class="org">Sparks Preschool (Seven Retail) · Jakarta</div></div>
+          <span class="when">Jun 2025 – Nov 2025</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Manage academic and school operations, coordinating programs, schedules, resources, teacher training and daily operational requirements.</li>
+          <li>Manage operational budgets and expenses, ensuring proper allocation, monitoring expenditures and alignment with approved budgets.</li>
+          <li>Handle purchasing and procurement, including sourcing school supplies, requesting quotations, coordinating vendors and monitoring purchase processes.</li>
+          <li>Manage vendor coordination and relationships to ensure timely delivery, competitive pricing and fulfillment of school requirements.</li>
+          <li>Support finance and budget administration: budget requests, expense monitoring, payment documentation and financial records.</li>
+          <li>Prepare operational and financial reports while maintaining accurate documentation and compliance with internal SOPs and policies.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-kalananti" data-track="ops" style="--c:var(--ops)">
+        <summary>
+          <div><h3>Project Coordinator B2B (Academic Operational)</h3><div class="org">Kalananti by Ruangguru · Jakarta</div></div>
+          <span class="when">Feb 2025 – Jun 2025</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Managed and oversaw the execution of educational programs in collaboration with schools.</li>
+          <li>Ensured program implementation aligned with academic standards and curriculum requirements.</li>
+          <li>Monitored and evaluated the effectiveness of learning programs and gave feedback for improvement.</li>
+          <li>Communicated with schools, internal teams and other stakeholders to keep operations running smoothly.</li>
+          <li>Handled administrative and technical issues related to academic operations.</li>
+          <li>Maintained attendance records and analyzed student performance data.</li>
+          <li>Prepared reports on program progress and academic achievements.</li>
+          <li>Managed multiple projects and ensured timely execution.</li>
+          <li>Collaborated with business and sales teams to explain program features.</li>
+          <li>Coordinated and prepared project requirements for smooth implementation.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-curriculum" data-track="cur" style="--c:var(--cur)">
+        <summary>
+          <div><h3>Senior Curriculum Designer</h3><div class="org">Skill Academy by Ruangguru · Jakarta</div></div>
+          <span class="when">Apr 2022 – Feb 2025</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Researched course value propositions, market competitiveness and customer insights.</li>
+          <li>Designed courses aligned with business objectives and learner needs.</li>
+          <li>Supervised and tracked progress of multiple content development projects.</li>
+          <li>Created course materials and adapted content to appropriate learning methods.</li>
+          <li>Defined course goals, target audience, prerequisites and delivery strategies.</li>
+          <li>Reported project status and key milestones to content management.</li>
+          <li>Developed and maintained project timelines to ensure on-time delivery.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-content" data-track="cur" style="--c:var(--cur)">
+        <summary>
+          <div><h3>Content Development</h3><div class="org">Skill Academy by Ruangguru · Jakarta</div></div>
+          <span class="when">Sep 2019 – Apr 2022</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Analyzed course objectives, target audience, prerequisites and resources to determine effective delivery methods.</li>
+          <li>Collaborated with subject matter experts to design interactive, engaging learning content.</li>
+          <li>Developed and modified instructional materials to meet specific, measurable learning outcomes.</li>
+          <li>Designed assessments aligned with course objectives and evaluation criteria.</li>
+          <li>Ran quality assurance checks and gave feedback to improve video learning content.</li>
+          <li>Participated in video production for educational modules.</li>
+          <li>Created content for marketing and business needs, including promotional materials and campaign assets.</li>
+          <li>Aligned educational content with broader business goals and learner engagement strategies.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-lead" data-track="tech" style="--c:var(--tech)">
+        <summary>
+          <div><h3>Technical Lead</h3><div class="org">Polaris Edu Partners · Jakarta</div></div>
+          <span class="when">Jan 2018 – Sep 2019</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Reported on tasks and achieved daily, weekly and monthly goals.</li>
+          <li>Defined project requirements and developed work schedules for the team.</li>
+          <li>Identified and resolved technical issues with effective solutions and workarounds.</li>
+          <li>Collaborated with stakeholders, IT teams and business units to keep projects aligned.</li>
+          <li>Designed and implemented client systems using in-house technology.</li>
+          <li>Provided product training and technical support to clients.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-support" data-track="tech" style="--c:var(--tech)">
+        <summary>
+          <div><h3>IT Support</h3><div class="org">Polaris Edu Partners · Jakarta</div></div>
+          <span class="when">Feb 2017 – Jan 2018</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Monitored and maintained computer systems, servers, networks and LMS.</li>
+          <li>Provided technical assistance and troubleshooting support to clients.</li>
+          <li>Created user manuals and documentation for internal and client use.</li>
+          <li>Tested new hardware and systems prior to deployment.</li>
+          <li>Installed and configured software, hardware, printers and networks.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-freelance" data-track="tech" style="--c:var(--tech)">
+        <summary>
+          <div><h3>Project Leader, Web Development (Freelance)</h3><div class="org">Ministry of Marine Affairs and Fisheries Indonesia and Campus Cyber Indonesia</div></div>
+          <span class="when">2018 – 2023</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Defined the scope, objectives, budget and schedule of the project with the client and the team.</li>
+          <li>Allocated resources such as hardware, software and manpower.</li>
+          <li>Coordinated and communicated tasks and responsibilities to team members.</li>
+          <li>Monitored and reported project progress regularly to the client and management.</li>
+          <li>Resolved issues and obstacles that arose during the project.</li>
+          <li>Evaluated and reviewed project outcomes and gave feedback to the team.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-diskominfo" data-track="tech" style="--c:var(--tech)">
+        <summary>
+          <div><h3>IT Web Developer (Internship)</h3><div class="org">DISKOMINFO · Bandung</div></div>
+          <span class="when">Jul 2015 – Aug 2015</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Gathered system requirements and conducted user needs analysis.</li>
+          <li>Developed internal web-based applications using the CodeIgniter (CI) framework.</li>
+        </ul>
+      </details>
+
+      <details class="job" id="job-kpsbu" data-track="tech" style="--c:var(--tech)">
+        <summary>
+          <div><h3>System Analyst (Internship)</h3><div class="org">KPSBU Lembang · Bandung</div></div>
+          <span class="when">Jan 2014 – Jul 2014</span><span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <ul>
+          <li>Analyzed existing systems and workflows to identify inefficiencies.</li>
+          <li>Proposed and implemented system improvements using appropriate technologies.</li>
+          <li>Supported users in adapting to newly developed systems.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="projects" aria-labelledby="h-projects">
+      <h2 id="h-projects">Projects</h2>
+      <div class="project">
+        <div>
+          <h3>Project file</h3>
+          <p>A sample of my work, available to view on Google Drive.</p>
+        </div>
+        <a class="btn primary" href="https://drive.google.com/file/d/11Sj-CXHcV4-tbMItS45Vflwlf9fd61aO/view" target="_blank" rel="noopener noreferrer">View project (opens in a new tab)</a>
+      </div>
+    </section>
+
+    <section id="speaking" aria-labelledby="h-speaking">
+      <h2 id="h-speaking">Speaking & workshops</h2>
+      <figure class="shot">
+        <img src="assets/workshop-2019.jpg" alt="Moch Agung Anugrah presenting with a microphone at an MoU signing and workshop event, with a projector screen and event banner behind him" loading="lazy" width="1200" height="900">
+        <figcaption>Presenting at the MoU signing and workshop of the Konsorsium PJJ UNPAS, 26 August 2019.</figcaption>
+      </figure>
+    </section>
+
+    <section id="skills" aria-labelledby="h-skills">
+      <h2 id="h-skills">Skills & tools</h2>
+      <div class="skills">
+        <div class="skillbox">
+          <h3>Core skills</h3>
+          <ul class="tags">
+            <li>Project Management</li><li>Educational Program Development</li><li>Learning Management Systems (LMS)</li>
+            <li>E-Learning Content Creation</li><li>Data Analysis for Education</li><li>Assessment Design & Evaluation</li>
+            <li>HTML</li><li>CSS</li><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>SEO</li>
+            <li>Video Editing</li><li>Content Creation and Planning</li>
+          </ul>
+        </div>
+        <div class="skillbox">
+          <h3>Ways of working</h3>
+          <ul class="tags">
+            <li>Time Management</li><li>Negotiation</li><li>Team Work</li><li>Analytical Thinking</li>
+            <li>Detail-Oriented</li><li>Curriculum Development</li><li>Instructional Design</li>
+            <li>Communication & Public Speaking</li><li>Problem-Solving</li><li>Adaptability in Education Technology</li>
+          </ul>
+        </div>
+        <div class="skillbox">
+          <h3>Tools</h3>
+          <ul class="tags">
+            <li>Visual Studio Code</li><li>Microsoft Office</li><li>G-Suite</li><li>Learning Management Systems</li>
+            <li>Zoom</li><li>Slack</li><li>Discord</li><li>Trello</li><li>TeamViewer</li><li>Canva</li>
+            <li>Adobe Illustrator</li><li>Adobe Premiere</li><li>Google Analytics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="h-edu">
+      <h2 id="h-edu">Education</h2>
+      <div class="edu">
+        <strong>Bachelor of Informatics Engineering</strong>
+        <p>Faculty of Engineering, Pasundan University Bandung · 2012 – 2016 · GPA 3.23 / 4.00</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Contact</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:mochagunganugrah@gmail.com"><small>Email</small>mochagunganugrah@gmail.com</a></li>
+        <li><a href="https://wa.me/6281214894615" rel="noopener"><small>WhatsApp / phone</small>+62 812-1489-4615</a></li>
+        <li><div class="loc"><small>Based in</small>Mampang Pela, Jakarta Selatan</div></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© <span id="yr"></span> Moch. Agung Anugrah</footer>
+</div>
+
+<script>
+(function(){
+  /* Career data: start/end as fractional years. Edit here when you add a role. */
+  var START=2014, END=2026;
+  var lanes=[
+    {key:"ops",label:"Operations & procurement",items:[
+      {id:"job-kalananti",t:"Kalananti",s:2025.08,e:2025.42},
+      {id:"job-sparks",t:"Sparks",s:2025.42,e:2025.92}]},
+    {key:"cur",label:"Curriculum & content",items:[
+      {id:"job-content",t:"Content Development",s:2019.67,e:2022.25},
+      {id:"job-curriculum",t:"Senior Curriculum Designer",s:2022.25,e:2025.08}]},
+    {key:"tech",label:"IT & web",items:[
+      {id:"job-kpsbu",t:"",s:2014.0,e:2014.5},
+      {id:"job-diskominfo",t:"",s:2015.5,e:2015.67},
+      {id:"job-support",t:"IT Support",s:2017.08,e:2018.0},
+      {id:"job-lead",t:"Technical Lead",s:2018.0,e:2019.67}]},
+    {key:"tech",label:"Freelance projects",items:[
+      {id:"job-freelance",t:"Web Development Project Leader",s:2018.0,e:2024.0}]}
+  ];
+  var g=document.getElementById("gantt"), span=END-START, pct=function(y){return ((y-START)/span*100)};
+  var axis=document.createElement("div");axis.className="axis";axis.setAttribute("aria-hidden","true");
+  for(var y=START;y<=Math.floor(END);y+=2){var s=document.createElement("span");s.style.left=pct(y)+"%";s.textContent=y;axis.appendChild(s)}
+  g.appendChild(axis);
+  lanes.forEach(function(l){
+    var lane=document.createElement("div");lane.className="lane";
+    var lab=document.createElement("div");lab.className="lane-label";lab.textContent=l.label;
+    var tr=document.createElement("div");tr.className="lane-track";
+    l.items.forEach(function(it){
+      var b=document.createElement("button");b.type="button";b.className="bar";
+      var title=document.getElementById(it.id).querySelector("h3").textContent;
+      b.setAttribute("aria-label",title+" – jump to details");b.title=title;
+      b.style.left=pct(it.s)+"%";b.style.width=Math.max(pct(it.e)-pct(it.s),1.2)+"%";
+      b.style.setProperty("--c","var(--"+l.key+")");b.textContent=it.t;
+      b.addEventListener("click",function(){openJob(it.id)});
+      tr.appendChild(b)});
+    lane.appendChild(lab);lane.appendChild(tr);g.appendChild(lane)});
+
+  function openJob(id){
+    var all=document.querySelectorAll(".chip");
+    var job=document.getElementById(id);
+    if(job.hidden){setFilter("all")}
+    job.open=true;
+    job.scrollIntoView({behavior:"smooth",block:"center"});
+    job.classList.remove("flash");void job.offsetWidth;job.classList.add("flash");
+    var sm=job.querySelector("summary");if(sm)sm.focus({preventScroll:true});
+  }
+
+  function setFilter(f){
+    document.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.f===f)});
+    document.querySelectorAll(".job").forEach(function(j){j.hidden=!(f==="all"||j.dataset.track===f)});
+  }
+  document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){setFilter(c.dataset.f)})});
+
+  /* theme toggle */
+  var root=document.documentElement,btn=document.getElementById("theme");
+  try{var saved=localStorage.getItem("theme");if(saved)root.dataset.theme=saved}catch(e){}
+  btn.addEventListener("click",function(){
+    var dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme=dark?"light":"dark";
+    try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+  });
+  document.getElementById("yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
